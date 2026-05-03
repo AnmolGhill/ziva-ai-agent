@@ -63,8 +63,8 @@ voice_html_path = os.path.join(data_dir, "Voice.html")
 with open(voice_html_path, "w") as f:
     f.write(HtmlCode)
 
-# Get working directory
-current_dir = os.getcwd()
+# Get working directory (project root)
+current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 Link = voice_html_path
 
 # Setup Chrome options
@@ -81,7 +81,7 @@ service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
 # Temporary path
-TempDirPath = f"{current_dir}/Frontend/Files"
+TempDirPath = os.path.join(current_dir, "Frontend", "Files")
 
 # Save assistant status
 def SetAssistantStatus(Status):
