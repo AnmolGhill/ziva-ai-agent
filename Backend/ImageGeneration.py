@@ -3,14 +3,14 @@ import asyncio
 from random import randint
 from PIL import Image
 from huggingface_hub import InferenceClient
-from dotenv import get_key
+from dotenv import dotenv_values
 import os
 from time import sleep
 
 
 # Function to open and display images based on a given prompt
 def open_images(prompt):
-    folder_path = r"..\Data"  # Folder where the images are stored
+    folder_path = os.path.join(project_root, "Data")  # Folder where the images are stored
     prompt = prompt.replace(" ", "_")  # Replace spaces in prompt with underscores
 
     # Generate the filenames for the images
@@ -30,8 +30,14 @@ def open_images(prompt):
             print(f"Unable to open {image_path}")
 
 
+# Get project root directory
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Load environment variables from root .env
+env_vars = dotenv_values(os.path.join(project_root, ".env"))
+
 # Initialize Hugging Face Inference Client
-client = InferenceClient(token=get_key('.env', 'HuggingFaceAPIKey'))
+client = InferenceClient(token=env_vars.get("HuggingFaceAPIKey"))
 
 
 # Async function to generate image using Hugging Face Inference Client
@@ -72,7 +78,7 @@ async def generate_images(prompt: str):
         if image_bytes is None:
             print(f"Failed to generate image {i + 1}")
             continue
-        with open(rf"..\Data\{prompt.replace(' ', '_')}{i + 1}.jpg", "wb") as f:
+        with open(os.path.join(project_root, "Data", f"{prompt.replace(' ', '_')}{i + 1}.jpg"), "wb") as f:
             f.write(image_bytes)
 
 
@@ -87,7 +93,7 @@ while True:
 
     try:
         # Read the status and prompt from the data file
-        with open(r"..\Frontend\Files\ImageGeneration.data", "r") as f:
+        with open(os.path.join(project_root, "Frontend", "Files", "ImageGeneration.data"), "r") as f:
             Data: str = f.read()
 
         if not Data or "," not in Data:
@@ -102,7 +108,7 @@ while True:
             ImageStatus = GenerateImages(prompt=Prompt)
 
             # Reset the status in the file after generating images
-            with open(r"..\Frontend\Files\ImageGeneration.data", "w") as f:
+            with open(os.path.join(project_root, "Frontend", "Files", "ImageGeneration.data"), "w") as f:
                 f.write("False,False")
                 break  # Exit the loop after processing the request
 

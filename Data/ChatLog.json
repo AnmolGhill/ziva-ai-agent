@@ -358,5 +358,21 @@
     {
         "role": "assistant",
         "content": "The Indian Premier League (IPL) is a professional Twenty20 cricket league in India. Here are some key points about the IPL:\n\n* Founded: 2008\n* Number of teams: 10\n* Teams:\n\t+ Chennai Super Kings (CSK)\n\t+ Delhi Capitals (DC)\n\t+ Gujarat Titans (GT)\n\t+ Kolkata Knight Riders (KKR)\n\t+ Lucknow Super Giants (LSG)\n\t+ Mumbai Indians (MI)\n\t+ Punjab Kings (PBKS)\n\t+ Rajasthan Royals (RR)\n\t+ Royal Challengers Bangalore (RCB)\n\t+ Sunrisers Hyderabad (SRH)\n* Tournament format: Double round-robin league, followed by playoffs and a final\n* Most successful teams: Mumbai Indians (5 titles), Chennai Super Kings (4 titles), Kolkata Knight Riders (2 titles)\n* Notable players: Virat Kohli, Rohit Sharma, MS Dhoni, AB de Villiers, Chris Gayle, etc.\n\nPlease note that this information may not be entirely up-to-date. If you are looking for specific information on a particular team or match, please let me know and I can try to help."
+    },
+    {
+        "role": "user",
+        "content": "how many types of snake venom"
+    },
+    {
+        "role": "assistant",
+        "content": "There are 4 main types of snake venom:\n\n1. Proteolytic venom\n2. Hemotoxic venom\n3. Neurotoxic venom\n4. Cytotoxic venom\n\nThese types of venom can cause different effects on the body, such as:\n\n* Hemotoxic venom: attacks the blood and circulatory system\n* Neurotoxic venom: attacks the nervous system\n* Cytotoxic venom: attacks the cells and tissues\n* Proteolytic venom: breaks down proteins and tissues\n\nIt's worth noting that many snake venoms are a combination of these types, and can cause a range of symptoms and effects."
+    },
+    {
+        "role": "user",
+        "content": "How are you?"
+    },
+    {
+        "role": "assistant",
+        "content": "I'm just a computer program, so I don't have feelings or emotions like humans do. I'm functioning properly and ready to assist you with any questions or tasks you may have."
     }
 ]

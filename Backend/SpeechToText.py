@@ -51,20 +51,19 @@ HtmlCode = '''<!DOCTYPE html>
 </body>
 </html>'''
 
+# Get project root directory
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # Replace language dynamically
 HtmlCode = str(HtmlCode).replace("recognition.lang = '';", f"recognition.lang = '{InputLanguage}';")
 
-# Get absolute paths
-script_dir = os.path.dirname(os.path.abspath(__file__))
-data_dir = os.path.join(os.path.dirname(script_dir), "Data")
-voice_html_path = os.path.join(data_dir, "Voice.html")
-
 # Save HTML file
+voice_html_path = os.path.join(project_root, "Data", "Voice.html")
 with open(voice_html_path, "w") as f:
     f.write(HtmlCode)
 
 # Get working directory (project root)
-current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+current_dir = project_root
 Link = voice_html_path
 
 # Setup Chrome options
@@ -81,7 +80,7 @@ service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
 # Temporary path
-TempDirPath = os.path.join(current_dir, "Frontend", "Files")
+TempDirPath = f"{current_dir}/Frontend/Files"
 
 # Save assistant status
 def SetAssistantStatus(Status):
